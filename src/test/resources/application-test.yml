@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: campsite
+  datasource:
+    url: jdbc:h2:mem:testdb;DB_CLOSE_ON_EXIT=FALSE
+    username: sa
+    password:
+    dialect: org.hibernate.dialect.H2Dialect
+    driver-class-name: org.h2.Driver
+  jpa:
+    show-sql: true
+    hibernate:
+      naming_strategy:
+  http:
+    multipart:
+      enabled: true
+      max-file-size: 128MB
+      max-request-size: 128MB
+      file-size-threshold: 0
+      location: ${java.io.tmpdir}
+      resolve-lazily: false
+  jackson:
+    default-property-inclusion: NON_NULL

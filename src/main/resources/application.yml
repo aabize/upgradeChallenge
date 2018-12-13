@@ -1,0 +1,42 @@
+server:
+  port: 8080
+  display-name: CAMPSITE
+  connection-timeout: 60000
+  compression:
+    enabled: true
+    min-response-size: 1024
+    mime-types:
+      - application/json
+      - application/xml
+      - application/xhtml+xml
+      - text/html
+      - text/xml
+      - text/plain
+  tomcat:
+    max-threads: 0
+    min-spare-threads: 0
+    uri-encoding: UTF-8
+    remote-ip-header: X-FORWARDED-FOR
+
+spring:
+  application:
+    name: campsite
+  datasource:
+    url: jdbc:mysql://localhost:13306/campsite
+    username: campsite
+    password: campsite
+    driver-class-name: com.mysql.jdbc.Driver
+    dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+  jpa:
+    hibernate:
+      naming_strategy:
+  http:
+    multipart:
+      enabled: true
+      max-file-size: 128MB
+      max-request-size: 128MB
+      file-size-threshold: 0
+      location: ${java.io.tmpdir}
+      resolve-lazily: false
+  jackson:
+    default-property-inclusion: NON_NULL

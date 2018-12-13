@@ -1,0 +1,7 @@
+{
+  "timestamp": "2018-12-12T09:10:40.653",
+  "status": 400,
+  "error": "Type mismatch",
+  "message": "Parameter 'to' has an invalid format",
+  "path": "/campsite/availability"
+}

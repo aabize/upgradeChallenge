@@ -1,0 +1,13 @@
+{
+  "reservationId": "e27f65e3-ae83-4192-85ba-b9b90a942898",
+  "guestName": "Name",
+  "guestMail": "aaa@gmail.com",
+  "arrivalDate": "2018-12-15",
+  "departureDate": "2018-12-18",
+  "links": [
+    {
+      "rel": "self",
+      "href": "http://localhost:8080/campsite/reservation/e27f65e3-ae83-4192-85ba-b9b90a942898"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "timestamp": "2018-12-12T09:10:40.653",
+  "status": 400,
+  "error": "Bad request",
+  "message": "End date date must be after begin date",
+  "path": "/campsite/availability"
+}

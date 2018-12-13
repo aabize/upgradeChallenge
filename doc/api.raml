@@ -1,0 +1,125 @@
+#%RAML 1.0
+
+title: campsite-reservation-api
+version: v1
+protocols: [ HTTPS ]
+baseUri: https://{host}:{port}/
+
+/campsite:
+  description: Resource to handle campsite reservations.
+  is:
+    - base
+  /availability:
+    description: Get campsite availability in the given time range.
+    is:
+      - base
+    get:
+      description: |
+        - Returns all ranges where the room is available.
+      queryParameters:
+        from:
+          description: Start date to check for availability. If no dates are given defaults to the current day.
+          type:        date-only
+          required:    false
+          example:     2018-12-01
+        to:
+          description: End date to check for availability. If no dates are given defaults to the current day plus one month.
+          type:        date-only
+          required:    false
+          example:     2019-01-01
+      responses:
+        200:
+          body:
+            application/campsite-availability-response-v1-hal+json:
+              example: !include examples/availability.json
+        400:
+          description: |
+            Bad request. This can happen if one of the dates are null or if the begin date is after the end date
+          body:
+            application/json:
+              examples:
+                availabilityError: !include examples/availabilityError.json
+                invalidParameter: !include examples/availabilityInvalidParameter.json
+                invalidDates: !include examples/availabilityInvalidDates.json
+
+  /reservation:
+    description: Resource to handle campsite reservations.
+    is:
+      - base
+    get:
+      description: |
+        - Returns a reservation by id.
+      responses:
+        200:
+          body:
+            application/campsite-reservation-response-v1-hal+json:
+              example: !include examples/reservationResponse.json
+        404:
+          body:
+            application/json:
+              example: !include examples/reservationNotFound.json
+    post:
+      description: |
+        - Makes a new reservation.
+      headers:
+        Accept:
+          type: string
+          required: true
+          enum: [application/campsite-reservation-v1-hal+json]
+      body:
+        application/campsite-reservation-v1-hal+json:
+          example: !include examples/campsiteReservation.json
+      responses:
+        201:
+          body:
+            application/campsite-reservation-response-v1-hal+json:
+              example: !include examples/reservationResponse.json
+        400:
+          description: |
+            Bad request. This can happen if some of the fields are null or invalid, if the campsite is not available or if it violates the business constraints.
+          body:
+            application/json:
+              examples:
+                reservationMissingParameter: !include examples/reservationMissingParameter.json
+                reservationNotAvailable: !include examples/reservationNotAvailable.json
+                reservationConstraintViolated: !include examples/reservationConstraintViolated.json
+    patch:
+      description: |
+        - Updates an existing reservation.
+      headers:
+        Accept:
+          type: string
+          required: true
+          enum: [application/campsite-reservation-patch-v1-hal+json]
+      body:
+        application/campsite-reservation-patch-v1-hal+json:
+          examples:
+            updateName: !include examples/updateName.json
+            updateDates: !include examples/updateDates.json
+      responses:
+        200:
+          body:
+            application/campsite-reservation-response-v1-hal+json:
+              example: !include examples/reservationResponse.json
+        404:
+          body:
+            application/json:
+              example: !include examples/reservationNotFound.json
+        400:
+          description: |
+            Bad request. This can happen if some of the dates are null or invalid, if the campsite is not available or if it violates the business constraints.
+          body:
+            application/json:
+              examples:
+                reservationNotAvailable: !include examples/reservationNotAvailable.json
+                reservationConstraintViolated: !include examples/reservationConstraintViolated.json
+    delete:
+      description: |
+        - Deletes a reservation by id.
+      responses:
+        204:
+          description: Reservation deleted successfully.
+        404:
+          body:
+            application/json:
+              example: !include examples/reservationNotFound.json
