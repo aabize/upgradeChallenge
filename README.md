@@ -18,13 +18,13 @@ or
 
 ``./gradlew bootJar`` and then executing the jar in build/libs directory
 
-####Configuration
+#### Configuration
 
 The configuration file is src/main/resources/application.yml. There is no need to change the values there.
 
 The server is configured to listen in port 8080 and the database port is 13306 (the same port exposed in the docker-compose).
 
-####Try the app
+#### Try the app
 
 In doc/postman there is a Postman collection with all the requests supported with examples (it is for Postman 2.1).
 
@@ -32,7 +32,7 @@ In doc/postman there is a Postman collection with all the requests supported wit
 
 To execute the unit tests, run:
 
-``./gradlew tests -i``
+``./gradlew test -i``
 
 A report is generated in build/reports/tests/test/index.html
 
