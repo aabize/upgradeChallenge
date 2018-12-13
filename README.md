@@ -32,7 +32,7 @@ In doc/postman there is a Postman collection with all the requests supported wit
 
 To execute the unit tests, run:
 
-``./gradlew tests -i``
+``./gradlew test -i``
 
 A report is generated in build/reports/tests/test/index.html
 
