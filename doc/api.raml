@@ -38,9 +38,8 @@ baseUri: https://{host}:{port}/
           body:
             application/json:
               examples:
-                availabilityError: !include examples/availabilityError.json
-                invalidParameter: !include examples/availabilityInvalidParameter.json
-                invalidDates: !include examples/availabilityInvalidDates.json
+                Invalid parameter: !include examples/availabilityInvalidParameter.json
+                Invalid dates: !include examples/availabilityInvalidDates.json
 
   /reservation:
     description: Resource to handle campsite reservations.
@@ -80,9 +79,9 @@ baseUri: https://{host}:{port}/
           body:
             application/json:
               examples:
-                reservationMissingParameter: !include examples/reservationMissingParameter.json
-                reservationNotAvailable: !include examples/reservationNotAvailable.json
-                reservationConstraintViolated: !include examples/reservationConstraintViolated.json
+                Missing parameter: !include examples/reservationMissingParameter.json
+                Campsite not available: !include examples/reservationNotAvailable.json
+                Business constraint violated: !include examples/reservationConstraintViolated.json
     patch:
       description: |
         - Updates an existing reservation.
@@ -94,8 +93,8 @@ baseUri: https://{host}:{port}/
       body:
         application/campsite-reservation-patch-v1-hal+json:
           examples:
-            updateName: !include examples/updateName.json
-            updateDates: !include examples/updateDates.json
+            Update name: !include examples/updateName.json
+            Update dates: !include examples/updateDates.json
       responses:
         200:
           body:
@@ -111,8 +110,8 @@ baseUri: https://{host}:{port}/
           body:
             application/json:
               examples:
-                reservationNotAvailable: !include examples/reservationNotAvailable.json
-                reservationConstraintViolated: !include examples/reservationConstraintViolated.json
+                Campsite not available: !include examples/reservationNotAvailable.json
+                Business constraint violated: !include examples/reservationConstraintViolated.json
     delete:
       description: |
         - Deletes a reservation by id.

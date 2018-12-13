@@ -1,7 +1,0 @@
-{
-  "timestamp": "2018-12-12T08:59:09.777",
-  "status": 400,
-  "error": "Bad request",
-  "message": "The campsite is not available in the period requested",
-  "path": "/campsite/availability"
-}

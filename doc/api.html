@@ -196,19 +196,13 @@ pre code {
       "href": "http://localhost:8080/campsite/availability?from=2018-12-01&amp;to=2018-12-31"
     }
   ]
-}</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2><p>Bad request. This can happen if one of the dates are null or if the begin date is after the end date</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: any</p><p><strong>Examples</strong>:</p><div class="examples"><p><strong>availabilityError</strong>:<br></p><pre><code>{
-  "timestamp": "2018-12-12T08:59:09.777",
-  "status": 400,
-  "error": "Bad request",
-  "message": "The campsite is not available in the period requested",
-  "path": "/campsite/availability"
-}</code></pre><p><strong>invalidParameter</strong>:<br></p><pre><code>{
+}</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2><p>Bad request. This can happen if one of the dates are null or if the begin date is after the end date</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: any</p><p><strong>Examples</strong>:</p><div class="examples"><p><strong>Invalid parameter</strong>:<br></p><pre><code>{
   "timestamp": "2018-12-12T09:10:40.653",
   "status": 400,
   "error": "Type mismatch",
   "message": "Parameter &#39;to&#39; has an invalid format",
   "path": "/campsite/availability"
-}</code></pre><p><strong>invalidDates</strong>:<br></p><pre><code>{
+}</code></pre><p><strong>Invalid dates</strong>:<br></p><pre><code>{
   "timestamp": "2018-12-12T09:10:40.653",
   "status": 400,
   "error": "Bad request",
@@ -231,13 +225,13 @@ pre code {
   "timestamp": "2018-12-12T09:14:19.745",
   "status": 404,
   "error": "Not found",
-  "message": "There is no reservation with code: e27f65e3-ae83-4192-85ba-b9b90a942898",
+  "message": "There is no reservation with the given code",
   "path": "/campsite/reservation/e27f65e3-ae83-4192-85ba-b9b90a942898"
 }</code></pre></div></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="campsite_reservation_post"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent">/campsite</span>/reservation</h4></div><div class="modal-body"><div class="alert alert-info"><ul><li>Makes a new reservation.</li></ul></div><ul class="nav nav-tabs"><li class="active"><a href="#campsite_reservation_post_request" data-toggle="tab">Request</a></li><li><a href="#campsite_reservation_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="campsite_reservation_post_request"><h3>Headers</h3><ul><li><strong>Accept</strong>: <em>required (application/campsite-reservation-v1-hal+json)</em></li></ul><h3>Body</h3><p><strong>Media type</strong>: application/campsite-reservation-v1-hal+json</p><p><strong>Type</strong>: any</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
   "guestName": "Name",
   "guestMail": "aaa@gmail.com",
   "arrivalDate": "2018-12-15",
-  "departureDate": "2018-12-18",
+  "departureDate": "2018-12-18"
 }
 </code></pre></div></div><div class="tab-pane" id="campsite_reservation_post_response"><h2>HTTP status code <a href="http://httpstatus.es/201" target="_blank">201</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/campsite-reservation-response-v1-hal+json</p><p><strong>Type</strong>: any</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
   "reservationId": "e27f65e3-ae83-4192-85ba-b9b90a942898",
@@ -251,25 +245,31 @@ pre code {
       "href": "http://localhost:8080/campsite/reservation/e27f65e3-ae83-4192-85ba-b9b90a942898"
     }
   ]
-}</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2><p>Bad request. This can happen if some of the fields are null or invalid, if the campsite is not available or if it violates the business constraints.</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: any</p><p><strong>Examples</strong>:</p><div class="examples"><p><strong>reservationMissingParameter</strong>:<br></p><pre><code>{
+}</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2><p>Bad request. This can happen if some of the fields are null or invalid, if the campsite is not available or if it violates the business constraints.</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: any</p><p><strong>Examples</strong>:</p><div class="examples"><p><strong>Missing parameter</strong>:<br></p><pre><code>{
   "timestamp": "2018-12-12T09:14:19.745",
   "status": 400,
   "error": "Bad request",
   "message": "You must provide the guest full name",
   "path": "/campsite/reservation/"
-}</code></pre><p><strong>reservationNotAvailable</strong>:<br></p><pre><code>{
+}</code></pre><p><strong>Campsite not available</strong>:<br></p><pre><code>{
   "timestamp": "2018-12-12T09:14:19.745",
   "status": 400,
   "error": "Bad request",
   "message": "The campsite is not available in the period requested",
   "path": "/campsite/reservation/"
-}</code></pre><p><strong>reservationConstraintViolated</strong>:<br></p><pre><code>{
+}</code></pre><p><strong>Business constraint violated</strong>:<br></p><pre><code>{
   "timestamp": "2018-12-12T09:14:19.745",
   "status": 400,
   "error": "Bad request",
   "message": "The max reservation time is 3 days",
   "path": "/campsite/reservation/"
-}</code></pre></div></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="campsite_reservation_patch"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_patch">patch</span> <span class="parent">/campsite</span>/reservation</h4></div><div class="modal-body"><div class="alert alert-info"><ul><li>Updates an existing reservation.</li></ul></div><ul class="nav nav-tabs"><li class="active"><a href="#campsite_reservation_patch_request" data-toggle="tab">Request</a></li><li><a href="#campsite_reservation_patch_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="campsite_reservation_patch_request"><h3>Headers</h3><ul><li><strong>Accept</strong>: <em>required (application/campsite-reservation-patch-v1-hal+json)</em></li></ul><h3>Body</h3><p><strong>Media type</strong>: application/campsite-reservation-patch-v1-hal+json</p><p><strong>Type</strong>: any</p><p><strong>Examples</strong>:</p><div class="examples"><p><strong>updateName</strong>:<br></p><pre><code>Can not resolve examples/updateName.json</code></pre><p><strong>updateDates</strong>:<br></p><pre><code>Can not resolve examples/updateDates.json</code></pre></div></div><div class="tab-pane" id="campsite_reservation_patch_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/campsite-reservation-response-v1-hal+json</p><p><strong>Type</strong>: any</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+}</code></pre></div></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="campsite_reservation_patch"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_patch">patch</span> <span class="parent">/campsite</span>/reservation</h4></div><div class="modal-body"><div class="alert alert-info"><ul><li>Updates an existing reservation.</li></ul></div><ul class="nav nav-tabs"><li class="active"><a href="#campsite_reservation_patch_request" data-toggle="tab">Request</a></li><li><a href="#campsite_reservation_patch_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="campsite_reservation_patch_request"><h3>Headers</h3><ul><li><strong>Accept</strong>: <em>required (application/campsite-reservation-patch-v1-hal+json)</em></li></ul><h3>Body</h3><p><strong>Media type</strong>: application/campsite-reservation-patch-v1-hal+json</p><p><strong>Type</strong>: any</p><p><strong>Examples</strong>:</p><div class="examples"><p><strong>Update name</strong>:<br></p><pre><code>{
+  "guestName": "Name"
+}
+</code></pre><p><strong>Update dates</strong>:<br></p><pre><code>{
+  "arrivalDate": "2018-12-15",
+  "departureDate": "2018-12-18"
+}</code></pre></div></div><div class="tab-pane" id="campsite_reservation_patch_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/campsite-reservation-response-v1-hal+json</p><p><strong>Type</strong>: any</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
   "reservationId": "e27f65e3-ae83-4192-85ba-b9b90a942898",
   "guestName": "Name",
   "guestMail": "aaa@gmail.com",
@@ -281,13 +281,13 @@ pre code {
       "href": "http://localhost:8080/campsite/reservation/e27f65e3-ae83-4192-85ba-b9b90a942898"
     }
   ]
-}</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2><p>Bad request. This can happen if some of the dates are null or invalid, if the campsite is not available or if it violates the business constraints.</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: any</p><p><strong>Examples</strong>:</p><div class="examples"><p><strong>reservationNotAvailable</strong>:<br></p><pre><code>{
+}</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2><p>Bad request. This can happen if some of the dates are null or invalid, if the campsite is not available or if it violates the business constraints.</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: any</p><p><strong>Examples</strong>:</p><div class="examples"><p><strong>Campsite not available</strong>:<br></p><pre><code>{
   "timestamp": "2018-12-12T09:14:19.745",
   "status": 400,
   "error": "Bad request",
   "message": "The campsite is not available in the period requested",
   "path": "/campsite/reservation/"
-}</code></pre><p><strong>reservationConstraintViolated</strong>:<br></p><pre><code>{
+}</code></pre><p><strong>Business constraint violated</strong>:<br></p><pre><code>{
   "timestamp": "2018-12-12T09:14:19.745",
   "status": 400,
   "error": "Bad request",
@@ -297,12 +297,12 @@ pre code {
   "timestamp": "2018-12-12T09:14:19.745",
   "status": 404,
   "error": "Not found",
-  "message": "There is no reservation with code: e27f65e3-ae83-4192-85ba-b9b90a942898",
+  "message": "There is no reservation with the given code",
   "path": "/campsite/reservation/e27f65e3-ae83-4192-85ba-b9b90a942898"
 }</code></pre></div></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="campsite_reservation_delete"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_delete">delete</span> <span class="parent">/campsite</span>/reservation</h4></div><div class="modal-body"><div class="alert alert-info"><ul><li>Deletes a reservation by id.</li></ul></div><ul class="nav nav-tabs"><li class="active"><a href="#campsite_reservation_delete_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="campsite_reservation_delete_response"><h2>HTTP status code <a href="http://httpstatus.es/204" target="_blank">204</a></h2><p>Reservation deleted successfully.</p><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: any</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
   "timestamp": "2018-12-12T09:14:19.745",
   "status": 404,
   "error": "Not found",
-  "message": "There is no reservation with code: e27f65e3-ae83-4192-85ba-b9b90a942898",
+  "message": "There is no reservation with the given code",
   "path": "/campsite/reservation/e27f65e3-ae83-4192-85ba-b9b90a942898"
 }</code></pre></div></div></div></div></div></div></div></div></div></div></div></div><div class="col-md-3"><div id="sidebar" class="hidden-print affix" role="complementary"><ul class="nav nav-pills nav-stacked"><li><a href="#campsite">/campsite</a></li></ul></div></div></div></div></body></html>

@@ -2,6 +2,6 @@
   "timestamp": "2018-12-12T09:14:19.745",
   "status": 404,
   "error": "Not found",
-  "message": "There is no reservation with code: e27f65e3-ae83-4192-85ba-b9b90a942898",
+  "message": "There is no reservation with the given code",
   "path": "/campsite/reservation/e27f65e3-ae83-4192-85ba-b9b90a942898"
 }
