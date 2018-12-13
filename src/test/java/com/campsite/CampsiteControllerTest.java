@@ -380,26 +380,26 @@ public class CampsiteControllerTest {
 
     @Test
     public void testAvailability() throws Exception {
-        /* In 2019-01 there are 4 reservations loaded in DB:
-           - '2019-01-05', '2019-01-08'
-           - '2019-01-09', '2019-01-11'
-           - '2019-01-15', '2019-01-18'
-           - '2019-01-18', '2019-01-22'
+        /* In 2017-01 there are 4 reservations loaded in DB:
+           - '2017-01-05', '2017-01-08'
+           - '2017-01-09', '2017-01-11'
+           - '2017-01-15', '2017-01-18'
+           - '2017-01-18', '2017-01-22'
 
            Availability will be checked from 01-06 to 01-31.
            There must be three available intervals: [01-08 - 01-09], [01-11 - 01-15], [01-22 - 01-31]
         */
-        mvc.perform(get("/campsite/availability/?from={from}&to={to}", "2019-01-06", "2019-01-31"))
+        mvc.perform(get("/campsite/availability/?from={from}&to={to}", "2017-01-06", "2017-01-31"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.requestedRange.from").value("2019-01-06"))
-                .andExpect(jsonPath("$.requestedRange.to").value("2019-01-31"))
+                .andExpect(jsonPath("$.requestedRange.from").value("2017-01-06"))
+                .andExpect(jsonPath("$.requestedRange.to").value("2017-01-31"))
                 .andExpect(jsonPath("$.availableRanges", hasSize(3)))
-                .andExpect(jsonPath("$.availableRanges[0].from").value("2019-01-08"))
-                .andExpect(jsonPath("$.availableRanges[0].to").value("2019-01-09"))
-                .andExpect(jsonPath("$.availableRanges[1].from").value("2019-01-11"))
-                .andExpect(jsonPath("$.availableRanges[1].to").value("2019-01-15"))
-                .andExpect(jsonPath("$.availableRanges[2].from").value("2019-01-22"))
-                .andExpect(jsonPath("$.availableRanges[2].to").value("2019-01-31"));
+                .andExpect(jsonPath("$.availableRanges[0].from").value("2017-01-08"))
+                .andExpect(jsonPath("$.availableRanges[0].to").value("2017-01-09"))
+                .andExpect(jsonPath("$.availableRanges[1].from").value("2017-01-11"))
+                .andExpect(jsonPath("$.availableRanges[1].to").value("2017-01-15"))
+                .andExpect(jsonPath("$.availableRanges[2].from").value("2017-01-22"))
+                .andExpect(jsonPath("$.availableRanges[2].to").value("2017-01-31"));
     }
 
     @Test
