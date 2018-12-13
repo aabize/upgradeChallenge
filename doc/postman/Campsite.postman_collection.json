@@ -1,0 +1,161 @@
+{
+	"info": {
+		"_postman_id": "539fc113-1093-4a4c-a643-1a2594704ea6",
+		"name": "Campsite",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Availability",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/campsite/availability?from=2018-12-01&to=2018-11-0",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"campsite",
+						"availability"
+					],
+					"query": [
+						{
+							"key": "from",
+							"value": "2018-12-01"
+						},
+						{
+							"key": "to",
+							"value": "2018-11-0"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Make reservation",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/campsite-reservation-v1-hal+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"guestName\": \"Ali\",\n  \"guestMail\": \"aaa@lala.com\",\n  \"arrivalDate\": \"2018-12-22\",\n  \"departureDate\": \"2018-12-18\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/campsite/reservation",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"campsite",
+						"reservation"
+					],
+					"query": [
+						{
+							"key": "Content-type",
+							"value": "application/campsite-reservation-post-v1-hal+json",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get reservation",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/campsite/reservation/f9f499d7-fa44-4266-bee6-5135e7f4b9c2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"campsite",
+						"reservation",
+						"f9f499d7-fa44-4266-bee6-5135e7f4b9c2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update reservation",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/campsite-reservation-patch-v1-hal+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"guestName\": \"Ariel\",\n  \"guestMail\": \"aaa@gmail.com\",\n  \"arrivalDate\": \"2018-10-01\",\n  \"departureDate\": \"2018-09-04\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/campsite/reservation/50cc3730-0c7c-483e-a26a-b31dbb1b53cb",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"campsite",
+						"reservation",
+						"50cc3730-0c7c-483e-a26a-b31dbb1b53cb"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete reservation",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/campsite/reservation/83913151-d9de-465f-a974-b1df83622ad0",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"campsite",
+						"reservation",
+						"83913151-d9de-465f-a974-b1df83622ad0"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
